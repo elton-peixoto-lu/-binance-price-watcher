@@ -1,0 +1,55 @@
+.symbol-selector {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.search-bar {
+  margin-bottom: 8px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.symbol-list {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 12px;
+}
+
+.symbol-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.symbol-list th, .symbol-list td {
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.symbol-list tr.selected {
+  background: #e6f7fa;
+}
+
+.add-to-list-btn {
+  background: #1db5be;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.add-to-list-btn:disabled {
+  background: #b2e0e3;
+  cursor: not-allowed;
+} 

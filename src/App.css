@@ -1,0 +1,245 @@
+body {
+  background: #f7f7f7;
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.app-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  text-align: center;
+  letter-spacing: -1px;
+}
+
+.panels {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: center;
+}
+
+.symbol-selector, .watched-list {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 24px 16px 16px 16px;
+  min-width: 320px;
+  max-width: 360px;
+  flex: 1 1 340px;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.symbol-selector {
+  min-width: 300px;
+  max-width: 340px;
+  position: relative;
+}
+
+.minimize-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #00a6b8;
+  z-index: 2;
+  transition: color 0.2s;
+}
+.minimize-btn:hover {
+  color: #007c8a;
+}
+
+.symbol-selector.minimized {
+  height: 56px;
+  min-width: 120px;
+  max-width: 180px;
+  overflow: hidden;
+  padding-bottom: 0;
+  padding-top: 12px;
+  justify-content: flex-start;
+}
+
+.symbol-selector.minimized .search-bar,
+.symbol-selector.minimized .symbol-list,
+.symbol-selector.minimized .add-to-list-btn {
+  display: none;
+}
+
+.symbol-selector.minimized::after {
+  content: 'Expandir';
+  color: #00a6b8;
+  font-size: 1rem;
+  position: absolute;
+  left: 16px;
+  top: 18px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.search-bar input[type="text"] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.search-bar input[type="text"]:focus {
+  border: 1.5px solid #00a6b8;
+}
+
+.symbol-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  border: 1px solid #f0f0f0;
+  background: #fafbfc;
+}
+
+.symbol-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.symbol-list th, .symbol-list td {
+  padding: 8px 8px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.symbol-list th {
+  background: #f3f4f6;
+  font-weight: 600;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.symbol-list tr.selected {
+  background: #e6f7fa;
+}
+
+.symbol-list tr:hover {
+  background: #f0f9fa;
+}
+
+.symbol-list input[type="checkbox"] {
+  accent-color: #00a6b8;
+  width: 18px;
+  height: 18px;
+}
+
+.add-to-list-btn {
+  width: 100%;
+  background: #00a6b8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+
+.add-to-list-btn:disabled {
+  background: #b2e4ea;
+  cursor: not-allowed;
+}
+
+.watched-list {
+  min-width: 400px;
+  max-width: 700px;
+  flex: 2 1 500px;
+}
+
+.watched-list h2 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.watched-list table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.watched-list th, .watched-list td {
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.watched-list th {
+  background: #f3f4f6;
+  font-weight: 600;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.watched-list tr {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.watched-list tr:last-child {
+  border-bottom: none;
+}
+
+.price-change {
+  background: #e6f7ea;
+  color: #00b86b;
+  font-weight: 600;
+  border-radius: 16px;
+  padding: 4px 12px;
+  display: inline-block;
+  min-width: 60px;
+  text-align: center;
+}
+
+.chart-container {
+  margin-top: 18px;
+  background: #fafbfc;
+  border-radius: 8px;
+  padding: 12px 8px 8px 8px;
+  min-height: 180px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+
+@media (max-width: 900px) {
+  .panels {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: unset;
+  }
+  .symbol-selector, .watched-list {
+    min-width: unset;
+    max-width: unset;
+    width: 100%;
+  }
+}
