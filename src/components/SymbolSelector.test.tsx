@@ -36,9 +36,9 @@ describe('SymbolSelector', () => {
     const input = screen.getByPlaceholderText(/search/i);
     fireEvent.change(input, { target: { value: 'BTC' } });
     // Aguarda renderização dos resultados
-    expect(await screen.findByText(/BTC/i)).toBeInTheDocument();
+    const btcCell = await screen.findByText(/^BTCUSDT$/i);
     // Simula clique na linha
-    const row = screen.getAllByRole('row')[1];
+    const row = btcCell.closest('tr');
     fireEvent.click(row);
     // O checkbox deve estar marcado
     const checkbox = row.querySelector('input[type="checkbox"]') as HTMLInputElement | null;
