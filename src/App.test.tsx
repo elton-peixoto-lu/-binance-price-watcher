@@ -11,12 +11,12 @@ describe('Integração: fluxo principal', () => {
     expect(screen.getAllByText('Minha Lista').length).toBeGreaterThan(0);
     // Busca e seleciona símbolo
     fireEvent.change(screen.getByPlaceholderText(/search/i), { target: { value: 'BTC' } });
-    const row = await screen.findByText(/BTC/i);
+    const row = await screen.findByText(/^BTCUSDT$/i);
     fireEvent.click(row);
     fireEvent.click(screen.getByText(/Add to List/i));
     // Seleciona para o gráfico
     fireEvent.click(row);
     // Verifica se aparece na tabela de stats do gráfico
-    expect(await screen.findAllByText(/BTC/i)).toBeTruthy();
+    expect(await screen.findAllByText(/BTCUSDT/i)).toBeTruthy();
   });
 });

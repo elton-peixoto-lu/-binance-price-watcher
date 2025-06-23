@@ -58,7 +58,7 @@ function AppContent() {
         <div className="panels">
           <div className={`symbol-selector`}>
             <SymbolSelector onSymbolClick={handleChartSymbolToggle} selectedChartSymbols={selectedChartSymbols} />
-          </div>image.png
+          </div>
           <div className="watched-list">
             <WatchedList onRowClick={handleChartSymbolToggle} selectedChartSymbols={selectedChartSymbols} />
           </div>
