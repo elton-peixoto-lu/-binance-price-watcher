@@ -12,3 +12,21 @@ class ResizeObserver {
 }
 // @ts-ignore
 window.ResizeObserver = ResizeObserver;
+
+// Mock global para fetch da Binance em todos os testes
+beforeEach(() => {
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      json: () => Promise.resolve({
+        symbols: [
+          { symbol: 'BTCUSDT', baseAsset: 'BTC', quoteAsset: 'USDT', status: 'TRADING' },
+          { symbol: 'ETHBTC', baseAsset: 'ETH', quoteAsset: 'BTC', status: 'TRADING' },
+        ]
+      }),
+    })
+  );
+});
+
+afterEach(() => {
+  global.fetch && (global.fetch as jest.Mock).mockRestore?.();
+});
