@@ -10,10 +10,10 @@ const renderWithProvider = (ui: React.ReactElement) => {
 describe('WatchedList', () => {
   it('renderiza tabela de símbolos', () => {
     renderWithProvider(<WatchedList />);
-    expect(screen.getByText(/Symbol/i)).toBeInTheDocument();
-    expect(screen.getByText(/Last Price/i)).toBeInTheDocument();
-    expect(screen.getByText(/Bid/i)).toBeInTheDocument();
-    expect(screen.getByText(/Ask/i)).toBeInTheDocument();
-    expect(screen.getByText(/Change %/i)).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: /Symbol/i })).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: /Last Price/i })).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: /Bid/i })).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: /Ask/i })).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: /Change %/i })).toBeInTheDocument();
   });
 }); 

@@ -3,6 +3,23 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { SymbolSelector } from './SymbolSelector';
 import { SymbolsProvider } from '../context/SymbolsContext';
 
+const mockSymbols = [
+  { symbol: 'BTCUSDT', baseAsset: 'BTC', quoteAsset: 'USDT', status: 'TRADING' },
+  { symbol: 'ETHBTC', baseAsset: 'ETH', quoteAsset: 'BTC', status: 'TRADING' },
+];
+
+beforeAll(() => {
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      json: () => Promise.resolve({ symbols: mockSymbols }),
+    })
+  ) as jest.Mock;
+});
+
+afterAll(() => {
+  (global.fetch as jest.Mock).mockRestore?.();
+});
+
 const renderWithProvider = (ui: React.ReactElement) => {
   return render(<SymbolsProvider>{ui}</SymbolsProvider>);
 };
