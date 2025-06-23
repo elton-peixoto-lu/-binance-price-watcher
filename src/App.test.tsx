@@ -16,14 +16,15 @@ describe('Integração: fluxo principal', () => {
     });
     // Marca o checkbox do símbolo BTCUSDT
     const btcRow = screen.getByText(/^BTCUSDT$/i).closest('tr');
-    const checkbox = btcRow.querySelector('input[type="checkbox"]');
-    fireEvent.click(checkbox);
+    expect(btcRow).not.toBeNull();
+    const checkbox = btcRow!.querySelector('input[type="checkbox"]');
+    fireEvent.click(checkbox!);
     // Aguarda o botão Add to List habilitar
     await waitFor(() => expect(screen.getByText(/Add to List/i)).not.toBeDisabled());
     // Adiciona à lista
     fireEvent.click(screen.getByText(/Add to List/i));
     // Seleciona para o gráfico (clicando na linha)
-    fireEvent.click(btcRow);
+    fireEvent.click(btcRow!);
     // Verifica se aparece na tabela de stats do gráfico
     expect(await screen.findAllByText(/BTCUSDT/i)).toBeTruthy();
   });

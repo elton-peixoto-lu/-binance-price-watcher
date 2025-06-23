@@ -39,9 +39,10 @@ describe('SymbolSelector', () => {
     const btcCell = await screen.findByText(/^BTCUSDT$/i);
     // Simula clique na linha
     const row = btcCell.closest('tr');
-    fireEvent.click(row);
+    expect(row).not.toBeNull();
+    fireEvent.click(row!);
     // O checkbox deve estar marcado
-    const checkbox = row.querySelector('input[type="checkbox"]') as HTMLInputElement | null;
+    const checkbox = row!.querySelector('input[type="checkbox"]') as HTMLInputElement | null;
     expect(checkbox?.checked).toBe(true);
   });
 }); 
